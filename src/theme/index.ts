@@ -1,30 +1,9 @@
-const zIndex = {
-  z1: 100,
-  z2: 1000,
-  z3: 10000,
-};
-
-export const colors = {
-  basic: {
-    black: '#000000',
-    white: '#ffffff',
-    green: '#839788',
-    sand: '#eee0cb',
-    khaki: '#baa898',
-    blue: '#bfd7ea',
-  },
-  secondary: {
-    lighter: 'rgb(242, 234, 225)',
-    dark: '#adadad',
-    darker: 'rgb(30, 30, 30)',
-  },
-  modern: {
-    orange: '#f4a261',
-    red: '#e76f51',
-    yellow: '#e9c46a',
-    green: '#2a9d8f',
-    blue: '#264653',
-  },
+const colors = {
+  primary: '#F4F7FF',
+  main: '#4547EA',
+  purple: '#2512CE',
+  dark: '#00000080',
+  peach: '#FF8077',
 };
 
 const spacing = {
@@ -52,7 +31,6 @@ const borderRadius = {
 
 export const defaultTheme = {
   colors,
-  zIndex,
   spacing,
   borderRadius,
 };
