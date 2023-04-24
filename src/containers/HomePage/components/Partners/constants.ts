@@ -12,6 +12,11 @@ export const PartnersConfig = [
     isActive: true,
   },
   {
+    id: 'trustpilot',
+    image: trustpilotIcon,
+    isActive: true,
+  },
+  {
     id: 'gartner',
     image: gartnerIcon,
     isActive: true,
@@ -19,12 +24,7 @@ export const PartnersConfig = [
   {
     id: 'capterra',
     image: capterraIcon,
-    isActive: false,
-  },
-  {
-    id: 'trustpilot',
-    image: trustpilotIcon,
-    isActive: false,
+    isActive: true,
   },
   {
     id: 'trustRadius',

@@ -24,7 +24,7 @@ export const Promo = () => {
 
   return (
     <Styled.Promo>
-      <img src={mainImage} alt="free" />
+      <Styled.Image src={mainImage} alt="free" />
       <Styled.Wrapper>
         <Styled.Title>Try It Free</Styled.Title>
         <Styled.Content>

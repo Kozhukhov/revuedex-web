@@ -8,6 +8,7 @@ export const Partners = () => {
       {PartnersConfig.map(({ id, image, isActive }) => (
         <Styled.Partner key={id} >
           <img src={image} alt={id} />
+          
           {!isActive && <Styled.Soon>soon</Styled.Soon>}
         </Styled.Partner>
       ))}

@@ -5,6 +5,12 @@ export const Footer = styled.footer`
     margin-top: ${theme.spacing.s30};
     padding-top: ${theme.spacing.s10};
     padding-bottom: ${theme.spacing.s10};
+
+    @media (max-width: 800px) {
+      margin-top: ${theme.spacing.s15};
+      padding-top: ${theme.spacing.s5};
+      padding-bottom: ${theme.spacing.s5};
+    }
   `}
 
   border-top: 1px solid rgba(0,0,0,0.1);

@@ -11,8 +11,10 @@ export const HowItWorks = () => {
         {StepsConfig.map(({ id, image, title, content }) => (
           <Styled.Step key={id}>
             <img src={image} alt={id} />
-            <Styled.Title>{title}</Styled.Title>
-            <Styled.Content>{content}</Styled.Content>
+            <div>
+              <Styled.Title>{title}</Styled.Title>
+              <Styled.Content>{content}</Styled.Content>
+            </div>
           </Styled.Step>
         ))}
       </Styled.Steps>

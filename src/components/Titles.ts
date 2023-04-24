@@ -6,4 +6,8 @@ export const BlockTitle = styled.h2`
   font-size: 42px;
   line-height: 50px;
   text-align: center;
+
+  @media (max-width: 800px) {
+    font-size: 30px;
+  }
 `;

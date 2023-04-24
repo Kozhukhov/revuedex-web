@@ -20,6 +20,11 @@ export const Action = styled.button`
   border: none;
   font-size: 16px;
   font-weight: 600;
+
+  @media (max-width: 800px) {
+    margin: auto;
+    font-size: 14px;
+  }
 `;
 
 export const TextField = styled.div`
@@ -31,6 +36,10 @@ export const TextField = styled.div`
   display: flex;
   width: fit-content;
   height: 44px;
+
+  @media (max-width: 800px) {
+    margin: auto;
+  }
 `;
 
 export const Input = styled.input`
@@ -48,5 +57,9 @@ export const Input = styled.input`
 
   ::placeholder {
     color: rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 800px) {
+    font-size: 14px;
   }
 `;

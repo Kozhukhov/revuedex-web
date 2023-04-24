@@ -1,6 +1,4 @@
-import React, { useCallback } from 'react';
-import * as Styled from './styled';
-import { Menu } from './constants';
+import React, { useCallback, useState } from 'react';
 import { Layout } from 'components/Layout';
 import { Logo } from 'components/Logo';
 import { TextField } from 'components/Field';
@@ -10,8 +8,14 @@ import {
   setCompany as setCompanyAction,
   startSearchProcess as startSearchProcessAction,
 } from 'containers/Application/actions';
+import * as Styled from './styled';
+import { Menu } from './constants';
+import closeIcon from './images/close.svg';
+import hamburgerIcon from './images/hamburger.svg';
 
 export const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const dispatch = useDispatch();
 
   const company = useSelector(companySelector);
@@ -22,14 +26,20 @@ export const Header = () => {
 
   const setValue = useCallback((value: string) => {
     dispatch(setCompanyAction(value));
-  }, [])
+  }, []);
 
   return (
     <Styled.Header>
       <Layout>
         <Styled.TopPanel>
           <Logo />
-          <Styled.Menu>
+          <Styled.Hamburger
+            src={hamburgerIcon}
+            alt="menu"
+            onClick={() => setIsMenuOpen(true)}
+          />
+          <Styled.Menu $isMenuOpen={isMenuOpen}>
+            <Styled.Close src={closeIcon} alt="close" onClick={() => setIsMenuOpen(false)} />
             {Menu.map(({ key, label }) => (
               <Styled.MenuItem key={key}>{label}</Styled.MenuItem>
             ))}
