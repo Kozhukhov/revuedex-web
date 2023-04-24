@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { store } from 'store';
@@ -8,7 +8,9 @@ import { GlobalStyle } from 'theme/GlobalStyle';
 import { defaultTheme } from 'theme';
 import { Application } from 'containers/Application';
 
-render(
+const rootElement = document.getElementById('app');
+
+const App = () => (
   <React.StrictMode>
     <GlobalStyle />
     <Provider context={storeContext} store={store}>
@@ -16,6 +18,11 @@ render(
         <Application />
       </ThemeProvider>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('app'),
+  </React.StrictMode>
 );
+
+if (rootElement!.hasChildNodes()) {
+  ReactDOM.hydrate(<App />, rootElement);
+} else {
+  ReactDOM.render(<App />, rootElement);
+}
