@@ -8,6 +8,7 @@ on:
     branches:
       - main
     # Define the branches on which the workflow should be triggered automatically, if desired
+  pull_request:
 
 jobs:
   deploy:
