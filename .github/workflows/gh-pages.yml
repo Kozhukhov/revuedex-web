@@ -1,11 +1,13 @@
 name: GitHub Pages
 
 on:
+  workflow_dispatch:
+    # This event allows manual triggering of the workflow
   push:
+    # This event is added as a placeholder, but the workflow_dispatch event is used for manual triggering
     branches:
       - main
-  pull_request:
-    workflow_dispatch:
+    # Define the branches on which the workflow should be triggered automatically, if desired
 
 jobs:
   deploy:
@@ -39,6 +41,7 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.event_name == 'workflow_dispatch'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
