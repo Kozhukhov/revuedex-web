@@ -1,0 +1,16 @@
+{
+  "routes": [
+    "/"
+  ],
+  "engine": {
+    "launchOptions": {
+      "args": [
+        "--no-sandbox"
+      ],
+      "product": "chrome",
+      "headless": true,
+      "ignoreHTTPSErrors": true,
+      "executablePath": "/usr/bin/chromium-browser"
+    }
+  }
+}

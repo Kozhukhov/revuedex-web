@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: docekr-react-c
+    image: docker-react-i
+    build:
+      context: .
+    ports:
+      - 8080:80
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true
