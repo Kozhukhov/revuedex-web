@@ -10,7 +10,8 @@
     "start": "env NODE_ENV=development webpack-dev-server --config internals/webpack/webpack.config.js",
     "build": "env NODE_ENV=production webpack --config internals/webpack/webpack.config.js",
     "postbuild": "react-spa-prerender",
-    "lint": "tsc --noEmit && eslint --cache --max-warnings=0",
+    "lint": "eslint --cache --max-warnings=0",
+    "tsc": "tsc --project tsconfig.json --skipLibCheck",
     "lint:fix": "eslint --fix",
     "docker-rebuild": "docker-compose up --build --force-recreate --no-deps"
   },
