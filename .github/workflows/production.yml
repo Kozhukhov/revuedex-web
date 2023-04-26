@@ -52,5 +52,5 @@ jobs:
           ssh -t ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} '
             cd /home/${{ secrets.SERVER_USER }}/revuedex-web;
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }};
-            docker-compose up --build
+            docker-compose up -d
           '
