@@ -21,3 +21,29 @@ jobs:
 
       - name: Eslint check
         run: yarn lint
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
+        run: yarn build
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Move Files to Server
+        run: |
+          ls -al
+          ssh -t ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'rm -rf ~/revuedex_web'
+          rsync -a -e "ssh -i ~/.ssh/id_rsa" --exclude ".git" --exclude ".github" --exclude "venv" $(pwd) ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~
+
