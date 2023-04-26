@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 
 services:
   app:
@@ -9,8 +9,8 @@ services:
     ports:
       - 8080:80
     networks:
-      - backend
+      - shared_backend
 
 networks:
-  backend:
+  shared_backend:
     external: true
