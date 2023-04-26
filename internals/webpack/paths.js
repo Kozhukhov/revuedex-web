@@ -1,7 +1,7 @@
 const path = require('path');
 
 const rootPath = path.resolve(__dirname, '../../');
-const buildDir = path.resolve(rootPath, './dist');
+const buildDir = path.resolve(rootPath, './build');
 const staticDir = path.resolve(buildDir, 'static');
 const srcDir = path.resolve(rootPath, 'src');
 const publicDir = path.resolve(rootPath, 'public');
