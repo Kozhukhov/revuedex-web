@@ -52,7 +52,7 @@ jobs:
           ssh -t ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} '
 
             cd /home/${{ secrets.SERVER_USER }}/revuedex_web;
-
+             ls -al;
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }};
-            docker-compose up -d
+            docker-compose up --build
           '
