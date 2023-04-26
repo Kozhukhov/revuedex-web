@@ -54,5 +54,5 @@ jobs:
             cd /home/${{ secrets.SERVER_USER }}/revuedex_web;
 
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }};
-            docker-compose -f docker-compose.yml up -d
+            docker-compose up -d
           '
