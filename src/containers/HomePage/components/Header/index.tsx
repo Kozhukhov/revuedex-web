@@ -48,7 +48,7 @@ export const Header = () => {
         <Styled.CentralPanel>
           <div>
             <Styled.Title>
-              Get Valuable Insights from Reviews with AI TT
+              Get Valuable Insights from Reviews with AI
             </Styled.Title>
             <Styled.Subtitle>
               Get the inside scoop on products and services with our expert
