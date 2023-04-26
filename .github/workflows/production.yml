@@ -27,7 +27,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-     - name: Restore node_modules cache
+      - name: Restore node_modules cache
         uses: actions/cache@v2
         with:
           path: ~/.npm
