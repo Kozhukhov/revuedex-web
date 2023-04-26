@@ -45,5 +45,5 @@ jobs:
         run: |
           ls -al
           ssh -t ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'rm -rf ~/revuedex_web'
-          rsync -a -e "ssh -i ~/.ssh/id_rsa" --include "build" --include "nginx.conf" $(pwd) ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~
+          rsync -a -e "ssh -i ~/.ssh/id_rsa" --include "build" --include "nginx.conf" --exclude "*" $(pwd) ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~
 
