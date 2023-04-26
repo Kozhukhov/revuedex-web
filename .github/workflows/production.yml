@@ -10,6 +10,11 @@ jobs:
   dependencies:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
       - name: Install dependencies
         uses: actions/cache@v3
         with:
@@ -27,39 +32,39 @@ jobs:
       - name: Get yarn cache
         id: yarn-cache
         run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> "${GITHUB_OUTPUT}"
-  
+
       - name: Types check
         run: yarn tsc
 
       - name: Eslint check
         run: yarn lint
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: write
-#     concurrency:
-#       group: ${{ github.workflow }}-${{ github.ref }}
-#     steps:
-#       - uses: actions/checkout@v3
+      # jobs:
+      #   deploy:
+      #     runs-on: ubuntu-latest
+      #     permissions:
+      #       contents: write
+      #     concurrency:
+      #       group: ${{ github.workflow }}-${{ github.ref }}
+      #     steps:
+      #       - uses: actions/checkout@v3
 
-#       - name: Setup Node
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '14'
+      # - name: Setup Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '14'
 
-#       - name: Get yarn cache
-#         id: yarn-cache
-#         run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> "${GITHUB_OUTPUT}"
+      # - name: Get yarn cache
+      #   id: yarn-cache
+      #   run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> "${GITHUB_OUTPUT}"
 
-#       - name: Cache dependencies
-#         uses: actions/cache@v3
-#         with:
-#           path: ${{ steps.yarn-cache.outputs.YARN_CACHE_DIR }}
-#           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-#           restore-keys: |
-#             ${{ runner.os }}-yarn-
-#       - run: yarn install --frozen-lockfile
+      # - name: Cache dependencies
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ${{ steps.yarn-cache.outputs.YARN_CACHE_DIR }}
+      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-yarn-
+      # - run: yarn install --frozen-lockfile
 #       - run: yarn build
 
 #       - name: Deploy
