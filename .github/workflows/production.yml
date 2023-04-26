@@ -5,115 +5,20 @@ on:
     branches:
       - main
   pull_request:
-  
+
 jobs:
-  job1:
+  lint:
     runs-on: ubuntu-latest
+    needs: dependencies
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Install dependencies
-        run: npm install
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Restore node_modules cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-
-      - name: Run linter
-        run: npm run tsc
+        run: yarn install --frozen-lockfile
 
-# name: Production
+      - name: Types check
+        run: yarn tsc
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-
-# jobs:
-#   dependencies:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Install dependencies
-#         run: yarn install --frozen-lockfile
-
-#       - name: Cache node_modules
-#         uses: actions/cache@v2
-#         with:
-#           path: ~/.npm
-#           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-#           restore-keys: |
-#             ${{ runner.os }}-node_modules-
-#   lint:
-#     runs-on: ubuntu-latest
-#     needs: dependencies
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
-
-#       - name: Install dependencies
-#         run: yarn install --frozen-lockfile
-
-#       # - name: Restore node_modules cache
-#       #   uses: actions/cache@v2
-#       #   with:
-#       #     path: ~/.npm
-#       #     key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-#       #     restore-keys: |
-#       #       ${{ runner.os }}-node_modules-
-
-#       - name: Types check
-#         run: yarn tsc
-
-#       - name: Eslint check
-#         run: yarn lint
-#       # jobs:
-#       #   deploy:
-#       #     runs-on: ubuntu-latest
-#       #     permissions:
-#       #       contents: write
-#       #     concurrency:
-#       #       group: ${{ github.workflow }}-${{ github.ref }}
-#       #     steps:
-#       #       - uses: actions/checkout@v3
-
-#       # - name: Setup Node
-#       #   uses: actions/setup-node@v3
-#       #   with:
-#       #     node-version: '14'
-
-#       # - name: Get yarn cache
-#       #   id: yarn-cache
-#       #   run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> "${GITHUB_OUTPUT}"
-
-#       # - name: Cache dependencies
-#       #   uses: actions/cache@v3
-#       #   with:
-#       #     path: ${{ steps.yarn-cache.outputs.YARN_CACHE_DIR }}
-#       #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-#       #     restore-keys: |
-#       #       ${{ runner.os }}-yarn-
-#       # - run: yarn install --frozen-lockfile
-# #       - run: yarn build
-
-# #       - name: Deploy
-# #         uses: peaceiris/actions-gh-pages@v3
-# #         # if: ${{ github.ref == 'refs/heads/main' }}
-# #         with:
-# #           github_token: ${{ secrets.GITHUB_TOKEN }}
-# #           publish_dir: ./build
+      - name: Eslint check
+        run: yarn lint

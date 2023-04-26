@@ -5,6 +5,7 @@ import { Routes } from './Routes';
 
 export const Application = () => {
   return (
+    // @ts-ignore
     <HistoryRouter history={history}>
       <Routes />
     </HistoryRouter>
