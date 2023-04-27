@@ -45,7 +45,7 @@ jobs:
         run: |
           ls -al
           ssh -t ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} 'rm -rf ~/revuedex-web'
-          rsync -a -e "ssh -i ~/.ssh/id_rsa" --include="*/" --include "Dockerfile" --include ".dockerignore" --include "docker-compose.yml" --include "^build/**" --include "nginx.conf" --exclude "*" --prune-empty-dirs $(pwd) ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~
+          rsync -a -e "ssh -i ~/.ssh/id_rsa" --include="*/" --include "Dockerfile" --include ".dockerignore" --include "docker-compose.yml" --include "build/**" --exclude "node_modules/**" --include "nginx.conf" --exclude "*" --prune-empty-dirs $(pwd) ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~
 
       - name: Deploy Application
         run: |
