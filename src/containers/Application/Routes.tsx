@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Route, Routes as BaseRoutes } from 'react-router-dom';
 import { HomePage } from 'containers/HomePage';
 import { PageUrl } from 'appConstants';
