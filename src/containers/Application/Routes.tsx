@@ -1,12 +1,14 @@
 import React from 'react';
 import { Route, Routes as BaseRoutes } from 'react-router-dom';
 import { HomePage } from 'containers/HomePage';
+import { ReportPage } from 'containers/ReportPage';
 import { PageUrl } from 'appConstants';
 
 export const Routes = () => {
   return (
     <BaseRoutes>
       <Route path={PageUrl.HOME_PAGE} element={<HomePage />} />
+      <Route path={PageUrl.REPORT_PAGE} element={<ReportPage />} />
     </BaseRoutes>
   );
 };
