@@ -22,5 +22,9 @@ export const GlobalStyle = createGlobalStyle`
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-font-smoothing: antialiased;
+
+    button {
+      font-family: 'Lato', sans-serif;
+    }
   }
 `;

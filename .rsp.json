@@ -1,6 +1,7 @@
 {
   "routes": [
-    "/"
+    "/",
+    "/report"
   ],
   "engine": {
     "launchOptions": {

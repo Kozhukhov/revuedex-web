@@ -6,7 +6,7 @@ export class ApplicationModel {
   company: string;
 
   constructor() {
-    this.company = '';
+    this.company = 'PandaDoc';
   }
 
   setCompany(company: string): void {
